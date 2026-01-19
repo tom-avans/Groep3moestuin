@@ -2,7 +2,7 @@
   <div>
     <table>
       <tr>
-        <th>hoi test home</th>
+        <th>Goedemorgen</th>
       </tr>
       <tr>
         <td></td>

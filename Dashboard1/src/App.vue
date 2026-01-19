@@ -10,28 +10,26 @@ import { ref } from 'vue'
 </script>
 
 <template>
-  <v-app> <v-layout>
+  
+  <v-app> 
+    <v-layout>
 
-    <v-app-bar color="green" density="compact">
-        <v-app-bar-title>Moestuin</v-app-bar-title>
-        <v-spacer></v-spacer>
-        <v-btn 
-          v-for="item in menuItems" 
-          :key="item.title" 
-          :to="item.to"
-          variant="text"
-        >
-          {{ item.title }}
-        </v-btn>
-      </v-app-bar>
+      <v-app-bar color="green" density="compact">
+          <v-app-bar-title>Moestuin</v-app-bar-title>
+          <v-btn 
+            v-for="item in menuItems" 
+            :key="item.title" 
+            :to="item.to"
+            variant="text"
+          >
+            {{ item.title }}
+          </v-btn>
+        </v-app-bar>
 
-      <v-main>
-      <router-view />
-    </v-main>
-    
-</v-layout>
-
-    
+        <v-main>
+          <router-view />
+        </v-main>    
+    </v-layout>    
   </v-app>
   
 </template>

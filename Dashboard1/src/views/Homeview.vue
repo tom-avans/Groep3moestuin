@@ -40,14 +40,56 @@ export default {
 
 
 <template>
-  <div>
-    <table>
-      <tr>
-        <th>Goedemorgen</th>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-    </table>
-  </div>
+    <h1>Live Sensor Data</h1>
+    
+    <v-btn class="ma-8" color="primary" @click="refreshClickHandler">Update gegevens</v-btn>
+
+    <hr>
+
+    <v-card class="sensor-card ma-4" width="400">
+      <v-card-title class="text-h5 bg-grey-lighten-4">
+        Waterkwaliteit
+      </v-card-title>
+      
+      <v-card-text class="pt-4">
+        <v-row class="mb-2">
+            <v-col cols="6" class="font-weight-bold">Temperatuur:</v-col>
+            <v-col cols="6" class="text-right text-blue">{{ sensorData.temp }} °C</v-col>
+        </v-row>
+        <v-divider></v-divider>
+
+        <v-row class="my-2">
+            <v-col cols="6" class="font-weight-bold">pH Waarde:</v-col>
+            <v-col cols="6" class="text-right">{{ sensorData.ph }}</v-col>
+        </v-row>
+        <v-divider></v-divider>
+
+        <v-row class="my-2">
+            <v-col cols="6" class="font-weight-bold">Licht:</v-col>
+            <v-col cols="6" class="text-right">{{ sensorData.licht }}</v-col>
+        </v-row>
+        <v-divider></v-divider>
+
+        <v-row class="my-2">
+            <v-col cols="6" class="font-weight-bold">Waterstroom:</v-col>
+            <v-col cols="6" class="text-right">{{ sensorData.waterstroom }}</v-col>
+        </v-row>
+        <v-divider></v-divider>
+
+        <v-row class="mt-2">
+            <v-col cols="6" class="font-weight-bold">Water aanwezig:</v-col>
+            <v-col cols="6" class="text-right" :class="sensorData.waterPresent === 'Ja' ? 'text-green' : 'text-red'">
+                {{ sensorData.waterPresent }}
+            </v-col>
+        </v-row>
+
+      </v-card-text>
+    </v-card>
 </template>
+  
+    
+<style scoped>
+  .sensor-card {
+    border: 1px solid #e0e0e0;
+  }
+</style>

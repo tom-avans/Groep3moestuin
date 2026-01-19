@@ -2,8 +2,9 @@
 import { ref } from 'vue'
 
   const menuItems = ref([
-  { title: 'Plant toevoegen', to: '/plantbeheer' },
-  { title: 'Toren toevoegen', to: '/Torenbeheer' }, // Pas aan als je deze pagina hebt
+  { title: 'Dashboard', to: '/' },
+  { title: 'Planten beheer', to: '/plantbeheer' },
+  { title: 'Toren beheer', to: '/Torenbeheer' }, // Pas aan als je deze pagina hebt
   { title: 'Toren data', to: '/Torendata' },   // Pas aan als je deze pagina hebt
   { title: 'Contact', to: '/contact' },       // Pas aan als je deze pagina hebt
 ])

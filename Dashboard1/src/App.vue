@@ -4,9 +4,9 @@ import { ref } from 'vue'
   const menuItems = ref([
   { title: 'Dashboard', to: '/' },
   { title: 'Planten beheer', to: '/plantbeheer' },
-  { title: 'Toren beheer', to: '/Torenbeheer' }, // Pas aan als je deze pagina hebt
-  { title: 'Toren data', to: '/Torendata' },   // Pas aan als je deze pagina hebt
-  { title: 'Contact', to: '/contact' },       // Pas aan als je deze pagina hebt
+  { title: 'Toren beheer', to: '/Torenbeheer' }, 
+  { title: 'Toren data', to: '/Torendata' },   
+  { title: 'Contact', to: '/contact' },       
 ])
 </script>
 
@@ -16,7 +16,7 @@ import { ref } from 'vue'
     <v-layout>
 
       <v-app-bar color="green" density="compact">
-          <v-app-bar-title>Moestuin</v-app-bar-title>
+          <v-app-bar-title>Moestuin groep 3</v-app-bar-title>
           <v-btn 
             v-for="item in menuItems" 
             :key="item.title" 

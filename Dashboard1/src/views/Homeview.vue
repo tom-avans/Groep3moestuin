@@ -13,7 +13,7 @@
 
     <v-divider class="mb-6"></v-divider>
 
-    <v-card class="mb-6 bg-grey-lighten-4" outlined>
+    <v-card class="mb-6 bg-grey-lighten-4" outlined, elevation="3">
       <v-card-text class="d-flex align-center">
         <div class="mr-4 font-weight-bold">Status Watersensor:</div>
         <div 
@@ -28,7 +28,7 @@
 
     <v-row>
       <v-col cols="12" md="6">
-        <v-card elevation="2">
+        <v-card elevation="3">
           <v-card-title class="text-subtitle-1">Temperatuur (°C)</v-card-title>
           <div class="chart-container">
             <LineChart :data="getChartData('Temperatuur', history.temp, '#FF5252')" :options="chartOptions" :key="history.labels.length" />
@@ -37,7 +37,7 @@
       </v-col>
 
       <v-col cols="12" md="6">
-        <v-card elevation="2">
+        <v-card elevation="3">
           <v-card-title class="text-subtitle-1">pH Waarde</v-card-title>
           <div class="chart-container">
             <LineChart :data="getChartData('pH', history.ph, '#4CAF50')" :options="chartOptions" :key="history.labels.length" />
@@ -46,7 +46,7 @@
       </v-col>
 
       <v-col cols="12" md="6">
-        <v-card elevation="2">
+        <v-card elevation="3">
           <v-card-title class="text-subtitle-1">Lichtsterkte</v-card-title>
           <div class="chart-container">
             <LineChart :data="getChartData('Licht', history.licht, '#FFC107')" :options="chartOptions" :key="history.labels.length" />
@@ -55,7 +55,7 @@
       </v-col>
 
       <v-col cols="12" md="6">
-        <v-card elevation="2">
+        <v-card elevation="3">
           <v-card-title class="text-subtitle-1">Waterstroom</v-card-title>
           <div class="chart-container">
             <LineChart :data="getChartData('Stroom', history.stroom, '#2196F3')" :options="chartOptions" :key="history.labels.length" />

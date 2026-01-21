@@ -72,7 +72,7 @@ const createChartData = (label, dataPoints, color) => ({
     backgroundColor: color + '33',
     borderColor: color,
     data: [...dataPoints],
-    tension: 0.3,
+    tension: 0,
     fill: true
   }]
 })

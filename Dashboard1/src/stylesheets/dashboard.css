@@ -1,5 +1,3 @@
-/* src/styling/css/dashboard.css */
-
 .chart-container {
   height: 250px;
   padding: 15px;
@@ -11,7 +9,6 @@
   border-radius: 50%;
   border: 1px solid rgba(0,0,0,0.2);
   transition: all 0.3s ease;
-  display: inline-block;
 }
 
 .status-led-on {
@@ -23,3 +20,6 @@
   background-color: #F44336;
   box-shadow: 0 0 8px #F44336;
 }
+
+
+

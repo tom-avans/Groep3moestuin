@@ -3,7 +3,7 @@ import HomeView from '@/views/Homeview.vue'
 import Plantbeheer from '@/views/Plantbeheer.vue'
 import Torenbeheer from '@/views/Torenbeheer.vue'
 import Torendata from '@/views/Torendata.vue'
-import Beheer from '@/views/Beheer.vue'
+import Beheer from '@/views/Loguit.vue'
 
 const routes = [
   { path: '/', component: HomeView },

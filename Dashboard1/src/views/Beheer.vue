@@ -2,7 +2,7 @@
   <div>
     <table>
       <tr>
-        <th>je moeder</th>
+        <th>Uit loggen</th>
       </tr>
       <tr>
         <td></td>

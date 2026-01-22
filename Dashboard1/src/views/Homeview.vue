@@ -29,7 +29,7 @@
           <div class="chart-container">
             <LineChart 
               :data="createChartData(chart.label, chart.dataPoints, chart.color)" 
-              :options="chartOptions" 
+              :options="getChartOptions(chart.min, chart.max)" 
             />
           </div>
         </v-card>
@@ -46,24 +46,77 @@ import {
   CategoryScale, LinearScale, PointElement 
 } from 'chart.js'
 
-// Importeer de logica uit het nieuwe pad
+// 1. Import the annotation plugin
+import annotationPlugin from 'chartjs-plugin-annotation'
+
+// Import logic from your data file
 import { useSensorLogic } from '@/data/sensorData'
 
-ChartJS.register(Title, Tooltip, Legend, LineElement, CategoryScale, LinearScale, PointElement)
+// 2. Register everything including the plugin
+ChartJS.register(
+  Title, Tooltip, Legend, LineElement, 
+  CategoryScale, LinearScale, PointElement, 
+  annotationPlugin
+)
 
 const { sensorData, history, lastUpdateTime } = useSensorLogic()
 
-const chartOptions = { 
-  responsive: true, 
-  maintainAspectRatio: false 
-}
-
+// 3. Define your sensor configurations with thresholds
 const chartConfigs = computed(() => [
-  { title: 'Temperatuur (°C)', label: 'Temperatuur', dataPoints: history.value.temp, color: '#FF5252' },
-  { title: 'pH Waarde', label: 'pH', dataPoints: history.value.ph, color: '#4CAF50' },
-  { title: 'Lichtsterkte', label: 'Licht', dataPoints: history.value.licht, color: '#FFC107' },
-  { title: 'Waterstroom', label: 'Stroom', dataPoints: history.value.stroom, color: '#2196F3' },
+  { title: 'Temperatuur (°C)', label: 'Temperatuur', dataPoints: history.value.temp, color: '#FF5252', min: 12, max: 25 },
+  { title: 'pH Waarde', label: 'pH', dataPoints: history.value.ph, color: '#4CAF50', min: 6.0, max: 7 },
+  { title: 'Lichtsterkte', label: 'Licht', dataPoints: history.value.licht, color: '#FFC107', min: 300, max: 900 },
+  { title: 'Waterstroom', label: 'Stroom', dataPoints: history.value.stroom, color: '#2196F3', min: 200, max: 800 },
 ])
+
+// 4. Function to generate options with dotted lines for each chart
+const getChartOptions = (minVal, maxVal) => ({
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    annotation: {
+      annotations: {
+        minLine: {
+          type: 'line',
+          yMin: minVal,
+          yMax: minVal,
+          borderColor: 'rgba(0, 0, 0, 0.4)',
+          borderWidth: 2,
+          borderDash: [5, 5],
+          label: {
+            display: true,
+            content: `Min: ${minVal}`,
+            position: 'end',
+            backgroundColor: 'rgba(0,0,0,0.6)',
+            font: { size: 10 }
+          }
+        },
+        maxLine: {
+          type: 'line',
+          yMin: maxVal,
+          yMax: maxVal,
+          borderColor: 'rgba(0, 0, 0, 0.4)',
+          borderWidth: 2,
+          borderDash: [5, 5],
+          label: {
+            display: true,
+            content: `Max: ${maxVal}`,
+            position: 'end',
+            backgroundColor: 'rgba(0,0,0,0.6)',
+            font: { size: 10 }
+          }
+        }
+      }
+    }
+  },
+  scales: {
+    y: {
+      beginAtZero: false,
+      // Optional: buffer the scale so lines aren't at the very edge
+      grace: '10%' 
+    }
+  }
+})
 
 const createChartData = (label, dataPoints, color) => ({
   labels: history.value.labels,
@@ -72,7 +125,7 @@ const createChartData = (label, dataPoints, color) => ({
     backgroundColor: color + '33',
     borderColor: color,
     data: [...dataPoints],
-    tension: 0,
+    tension: 0.3,
     fill: true
   }]
 })

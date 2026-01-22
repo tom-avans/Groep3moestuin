@@ -6,7 +6,7 @@ import { ref } from 'vue'
   { title: 'Planten beheer', to: '/plantbeheer' },
   { title: 'Toren beheer', to: '/Torenbeheer' }, 
   { title: 'Toren data', to: '/Torendata' },   
-  { title: 'Contact', to: '/contact' },       
+  { title: 'Beheerder', to: '/beheer' },       
 ])
 </script>
 

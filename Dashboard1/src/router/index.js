@@ -3,14 +3,14 @@ import HomeView from '@/views/Homeview.vue'
 import Plantbeheer from '@/views/Plantbeheer.vue'
 import Torenbeheer from '@/views/Torenbeheer.vue'
 import Torendata from '@/views/Torendata.vue'
-import Contact from '@/views/Contact.vue'
+import Beheer from '@/views/Beheer.vue'
 
 const routes = [
   { path: '/', component: HomeView },
   { path: '/plantbeheer', component: Plantbeheer },
   { path: '/torenbeheer', component: Torenbeheer },
   { path: '/torendata', component: Torendata },
-  { path: '/contact', component: Contact },
+  { path: '/beheer', component: Beheer },
 ]
 
 const router = createRouter({
